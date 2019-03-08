@@ -3,3 +3,4 @@
 exec 2>&1
 
 mkdir -p {{pkg.svc_data_path}}/bamboo
+chown -R hab:hab {{pkg.svc_path}}/*
