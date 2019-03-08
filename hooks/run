@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "bamboo.home=${pkg_svc_data_path}/bamboo" >> "${pkg_prefix}/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties"
+
+exec ${pkg_prefix}/bin/start-bamboo.sh 2>&1
