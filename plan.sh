@@ -17,12 +17,6 @@ do_build() {
 
 do_install() {
   cp -vr ./* "${pkg_prefix}"
-echo ""
-echo $pkg_prefix
-echo ""
-echo $pkg_svc_config_path
-echo ""
-echo $HAB_PKG_PATH
-echo "kmf"
+  cp "${PLAN_CONTEXT}/bamboo-init.properties" "${pkg_prefix}/atlassian-bamboo/WEB-INF/classes/"
 }
 
