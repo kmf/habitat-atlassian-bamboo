@@ -12,7 +12,7 @@ pkg_exports=(
 pkg_exposes=(bamboo_port)
 
 pkg_deps=(
-  core/jre8
+  core/jdk8
 )
 
 
