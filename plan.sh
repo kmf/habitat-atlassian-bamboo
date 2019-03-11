@@ -11,6 +11,11 @@ pkg_exports=(
 )
 pkg_exposes=(bamboo_port)
 
+pkg_deps=(
+  core/jre8
+)
+
+
 do_build() {
   return 0
 }

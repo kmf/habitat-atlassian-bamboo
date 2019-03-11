@@ -3,5 +3,15 @@
 exec  2>&1
 
 #echo "bamboo.home={{pkg.svc_data_path}}/bamboo" >> "{{pkg_prefix}}/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties"
+if path={{pkgPathFor "core/jdk8"}}; then
+  export JAVA_HOME=$path
+elif path={{pkgPathFor "core/jdk7"}}; then
+  export JAVA_HOME=$path
+fi
+if [ -z ${JAVA_HOME+x} ]; then
+  echo "Cannot start Tomcat without core/jdk8 or core/jdk7"
+  exit 1
+fi
+
 
 exec {{pkg.path}}/bin/start-bamboo.sh  2>&1
