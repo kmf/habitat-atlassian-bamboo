@@ -21,7 +21,18 @@ do_build() {
 }
 
 do_install() {
+  # Copy the source into the package
   cp -vr ./* "${pkg_prefix}"
-  cp "${PLAN_CONTEXT}/bamboo-init.properties" "${pkg_prefix}/atlassian-bamboo/WEB-INF/classes/"
+
+  # # Update bamboo-init.properties to tell Bamboo where its data goes
+  # cp "${PLAN_CONTEXT}/bamboo-init.properties" "${pkg_prefix}/atlassian-bamboo/WEB-INF/classes/"
+
+  # Make sure we redirect Tomcat log/work/conf dirs to somewhere writable
+  rmdir $pkg_prefix/work
+  rmdir $pkg_prefix/logs
+  mv $pkg_prefix/conf $pkg_prefix/conf.sample
+  ln -s $pkg_svc_data_path/work $pkg_prefix/work
+  ln -s $pkg_svc_data_path/logs $pkg_prefix/logs
+  ln -s $pkg_svc_path/config $pkg_prefix/conf
 }
 
