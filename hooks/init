@@ -2,6 +2,9 @@
 
 exec 2>&1
 
+# A writable place for Bamboo to put its data
 mkdir -p {{pkg.svc_data_path}}/bamboo
 
-chown -R hab:hab {{pkg.svc_path}}/*
+# A writable place for Tomcat to put its data and logs
+mkdir -p {{pkg.svc_data_path}}/work
+mkdir -p {{pkg.svc_data_path}}/logs
